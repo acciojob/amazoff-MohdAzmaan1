@@ -38,7 +38,7 @@ public class OrderRepository {
 
         if(orderHashMap.containsKey(orderId) && deliveryPartnerHashMap.containsKey(partnerId)){
 
-            HashSet<String> currentOrders = new HashSet<>();
+            HashSet<String> currentOrders = new HashSet<String>();
             if(partnerOrderHashMap.containsKey(partnerId))
                 currentOrders = partnerOrderHashMap.get(partnerId);
             currentOrders.add(orderId);
@@ -70,7 +70,9 @@ public class OrderRepository {
             partner.setNumberOfOrders(orders.size());
         }
 
-        orderHashMap.remove(orderId);
+        if(orderHashMap.containsKey(orderId)){
+            orderHashMap.remove(orderId);
+        }
 
     }
 
@@ -79,12 +81,17 @@ public class OrderRepository {
         if(partnerOrderHashMap.containsKey(partnerId)){
             orders = partnerOrderHashMap.get(partnerId);
             for(String order: orders){
-                orderPartnerHashMap.remove(order);
+                if(orderPartnerHashMap.containsKey(order)){
+
+                    orderPartnerHashMap.remove(order);
+                }
             }
             partnerOrderHashMap.remove(partnerId);
         }
 
-        deliveryPartnerHashMap.remove(partnerId);
+        if(deliveryPartnerHashMap.containsKey(partnerId)){
+            deliveryPartnerHashMap.remove(partnerId);
+        }
     }
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
