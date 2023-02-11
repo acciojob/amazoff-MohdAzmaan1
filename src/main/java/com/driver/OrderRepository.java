@@ -95,7 +95,7 @@ public class OrderRepository {
     }
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
-        int time = 0;
+        Integer time = 0;
 
         if(partnerOrderHashMap.containsKey(partnerId)){
             HashSet<String> orders = partnerOrderHashMap.get(partnerId);
@@ -123,11 +123,11 @@ public class OrderRepository {
     }
 
     public Integer getOrdersLeftAfterGivenTimeByPartnerId(String timeS, String partnerId) {
-        int hour = Integer.parseInt(timeS.substring(0, 2));
-        int minutes = Integer.parseInt(timeS.substring(3));
-        int time = hour*60 + minutes;
+        Integer hour = Integer.valueOf(timeS.substring(0, 2));
+        Integer minutes = Integer.valueOf(timeS.substring(3));
+        Integer time = hour*60 + minutes;
 
-        int countOfOrders = 0;
+        Integer countOfOrders = 0;
         if(partnerOrderHashMap.containsKey(partnerId)){
             HashSet<String> orders = partnerOrderHashMap.get(partnerId);
             for(String order: orders){
@@ -143,7 +143,7 @@ public class OrderRepository {
     }
 
     public Integer getCountOfUnassignedOrders() {
-        int countOfOrders = 0;
+        Integer countOfOrders = 0;
         List<String> orders =  new ArrayList<>(orderHashMap.keySet());
         for(String orderId: orders){
             if(!orderPartnerHashMap.containsKey(orderId)){
