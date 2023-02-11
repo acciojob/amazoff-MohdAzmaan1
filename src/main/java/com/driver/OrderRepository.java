@@ -22,9 +22,9 @@ public class OrderRepository {
         this.partnerOrderHashMap = new HashMap<>();
     }
 
-//    public void addOrder(Order order) {
-//        orderHashMap.put(order.getId(), order);
-//    }
+    public void addOrder(Order order) {
+        orderHashMap.put(order.getId(), order);
+    }
 
     public Order getOrderById(String orderId) {
         return orderHashMap.get(orderId);

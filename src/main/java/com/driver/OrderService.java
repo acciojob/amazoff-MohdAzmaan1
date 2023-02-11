@@ -11,9 +11,9 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-//    public void addOrder(Order order) {
-//        orderRepository.addOrder(order);
-//    }
+    public void addOrder(Order order) {
+        orderRepository.addOrder(order);
+    }
 
     public Order getOrderById(String orderId) {
         return orderRepository.getOrderById(orderId);
